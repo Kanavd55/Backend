@@ -1,10 +1,15 @@
+const {adminAuth,userAuth} = require("./middlewares/auth")
 const express = require('express');
 
 const app =express();
 
-app.get("/user",(req,res)=>{
+app.get("/user",(req,res,next)=>{
 
     console.log(req.query)
+    next()
+})
+
+app.get("/user",adminAuth,(req,res)=>{
     res.send({
         firstname:"kanav",
         lastname:"Dahat"
