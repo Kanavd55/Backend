@@ -1,0 +1,16 @@
+{
+  "name": "devtinderbackend",
+  "version": "1.0.0",
+  "description": "Learning Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src/app.js",
+    "dev":"nodemon src/app.js"
+  },
+  "author": "Kanav Dahat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
