@@ -1,6 +1,7 @@
 const {adminAuth,userAuth} = require("./middlewares/auth")
 const express = require('express');
-
+const connectDB = require("./config/database")
+const User = require('./models/user')
 const app =express();
 
 app.get("/user",(req,res,next)=>{
@@ -24,8 +25,15 @@ app.get("/user/:userId",(req,res)=>{
     })
 })
 
-app.post("/hello",async (req,res)=>{
-    res.send("Data saved successfully to the db ")
+app.post("/user",async (req,res)=>{
+    //creating a new instance
+    const user = new User({
+        firstName:"testing",
+        lastName:"testing",
+        password:"test"
+    })
+    await user.save();
+    res.send("User Added successfully ")
 })
 
 
@@ -33,6 +41,12 @@ app.get("/",(req,res)=>{
     res.send("Hell")
 })
 
-app.listen(3000,()=>{
-    console.log("server is listening")
-});
+connectDB().then(()=>{
+    console.log("Database connected successfully")
+    app.listen(7777,()=>{
+        console.log("server is listening")
+    });
+})
+.catch(()=>{
+    console.error("Database cannot be connected")
+})
