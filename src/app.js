@@ -40,11 +40,10 @@ app.post("/login", async (req, res) => {
       throw new Error("Invalid Crendentials");
     }
     //console.log(user)
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    console.log(isPasswordValid);
+    const isPasswordValid = await user.validatePassword(password)
     if (isPasswordValid) {
       //Create a JWT token
-      const token = await jwt.sign({ _id: user._id }, "DEVTINDER$790",{expiresIn:new Date(Date.now() + 8 * 3600000)});
+      const token = await user.getJwt();
       res.cookie("token", token);
       res.send("Login successful");
     } else {
