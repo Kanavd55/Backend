@@ -13,19 +13,16 @@ const validateSignUpData = (req) => {
 
 const validateEditProfileData = (req) => {
     const allowedEditFields = [
-        "firstName",
-        "lastName",
-        "emailId",
-        "photoUrl",
+        "firstname",
+        "lastname",
+        "emailid",
+        "photourl",
         "gender",
         "age",
         "about",
         "skills"
     ]
-    const isEditAllowed = Object.keys(req.body).every((field)=>{
-        allowedEditFields.toLowerCase().includes(field.toLowerCase())
-    })
-
+    const isEditAllowed = Object.keys(req.body).every((field)=>allowedEditFields.includes(field.toLowerCase()))
     return isEditAllowed;
 }
 
