@@ -75,7 +75,7 @@ requestRouter.post("/request/review/:status/:requestId",userAuth,async (req,res)
       data
     })
   } catch (error) {
-    res.status(400).send("error"+ err.message)
+    res.status(400).send("error"+ error.message)
   }
 })
 

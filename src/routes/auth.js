@@ -9,7 +9,6 @@ authRouter.post("/signup", async (req, res) => {
     try {
       validateSignUpData(req);
       const { firstName, lastName, emailId, password } = req.body;
-  
       const passwordHash = await bcrypt.hash(password, 10);
       const user = new User({
         firstName,
@@ -24,7 +23,7 @@ authRouter.post("/signup", async (req, res) => {
         data:savedUser
     });
     } catch (err) {
-      res.status(400).send("Error saving data", err.message);
+      res.status(400).send("Error saving data"+ err.message);
     }
   });
   
