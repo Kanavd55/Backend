@@ -4,7 +4,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:"https://kanavconnect.netlify.app",
   credentials:true
 }))
 app.use(express.json()); //To convert json object into js object
