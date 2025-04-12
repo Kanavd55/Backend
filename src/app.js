@@ -7,6 +7,12 @@ app.use(cors({
   origin:"https://kanavconnect.netlify.app",
   credentials:true
 }))
+
+// 👇 Add this to handle preflight OPTIONS requests
+app.options('*', cors({
+  origin: 'https://kanavconnect.netlify.app',
+  credentials: true
+}));
 app.use(express.json()); //To convert json object into js object
 app.use(cookieParser());
 const authRouter = require("./routes/auth")
