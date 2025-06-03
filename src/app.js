@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require('cors');
 app.use(cors({
   origin:"https://kanavconnect.netlify.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials:true
 }))
 
